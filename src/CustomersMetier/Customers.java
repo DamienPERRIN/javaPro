@@ -1,86 +1,98 @@
-
+/**
+ * The type Customers.
+ */
 public class Customers
 {
     private int id;
     private String name, password, email, country;
 
     /**
+     * Gets id.
      *
-     * @return
+     * @return id
      */
     public int getId() {
         return id;
     }
 
     /**
+     * Sets id.
      *
-     * @param id
+     * @param id the id
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
+     * Gets name.
      *
-     * @return
+     * @return name
      */
     public String getName() {
         return name;
     }
 
     /**
+     * Sets name.
      *
-     * @param name
+     * @param name the name
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
+     * Gets password.
      *
-     * @return
+     * @return password
      */
     public String getPassword() {
         return password;
     }
 
     /**
+     * Sets password.
      *
-     * @param password
+     * @param password the password
      */
     public void setPassword(String password) {
-        this.password = password;
+        this.password = md5(password);
     }
 
     /**
+     * Gets email.
      *
-     * @return
+     * @return email
      */
     public String getEmail() {
         return email;
     }
 
     /**
+     * Sets email.
      *
-     * @param email
+     * @param email the email
      */
     public void setEmail(String email) {
-        this.email = email;
+        (email != null) ? this.email = email : "";
     }
 
     /**
+     * Gets country.
      *
-     * @return
+     * @return country
      */
     public String getCountry() {
         return country;
     }
 
     /**
+     * Sets country.
      *
-     * @param country
+     * @param country the country
      */
     public void setCountry(String country) {
-        this.country = country;
+        (country != null) ? this.country = country : "";
     }
 }
