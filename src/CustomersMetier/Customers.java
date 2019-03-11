@@ -1,3 +1,7 @@
+package CustomersMetier;
+
+import java.security.*;
+
 /**
  * The type Customers.
  */
@@ -57,8 +61,15 @@ public class Customers
      * @param password the password
      */
     public void setPassword(String password) {
-        this.password = md5(password);
+        this.password = password;
     }
+
+//    private String md5(String password) {
+//        byte[] byteChaine = password.getBytes(UTF-8);
+//        MessageDigest md = MessageDigest.getInstance(MD5);
+//        byte[] hash = md.digest(byteChaine);
+//        return hash;
+//    }
 
     /**
      * Gets email.
@@ -75,7 +86,9 @@ public class Customers
      * @param email the email
      */
     public void setEmail(String email) {
-        (email != null) ? this.email = email : "";
+        if ((email != null)) {
+            this.email = email;
+        }
     }
 
     /**
@@ -93,6 +106,8 @@ public class Customers
      * @param country the country
      */
     public void setCountry(String country) {
-        (country != null) ? this.country = country : "";
+        if ((country != null)) {
+            this.country = country;
+        }
     }
 }
