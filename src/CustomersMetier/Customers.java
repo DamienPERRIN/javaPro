@@ -8,7 +8,7 @@ import java.security.*;
 public class Customers
 {
     private int id;
-    private String name, password, email, country;
+    private String fullname, password, email, country;
 
     /**
      * Gets id.
@@ -34,7 +34,7 @@ public class Customers
      * @return name
      */
     public String getName() {
-        return name;
+        return fullname;
     }
 
     /**
@@ -43,7 +43,7 @@ public class Customers
      * @param name the name
      */
     public void setName(String name) {
-        this.name = name;
+        this.fullname = name;
     }
 
     /**

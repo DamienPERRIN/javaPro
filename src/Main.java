@@ -3,36 +3,34 @@ import java.sql.*;
 /**
  * The type Main.
  */
-public class Main {
+public class Main extends CustomersDAO {
 
     /**
      * The entry point of application.
      *
      * @param args the input arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args, CustomersDAO id) {
 
 //        System.out.println("Hello World!");
 
-        Connection conn = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("url", "user", "password");
-//            DriverManager.registerDriver (new oracle.jdbc.OracleDriver());
-            Statement st = conn.createStatement();
-            resultSet rs = st.executeQuery("SELECT * FROM Customers");
+        try(Connection conn = DriverManager.getConnection(CustomersDAO.DBURL, CustomersDAO.USERNAME, CustomersDAO.PASSWORD)) { // try-with-ressources
 
-            while (rs.next()){
-                String name = rs.getString("Name");
-//                ...TODO
-            }
-            rs.close();
-        } catch(ClassNotFoundException cnf) {
-            System.out.println("Le pilote est introuvable");
+//            switch (action){
+//                case "create": CustomersDAO.createCustomer();
+//                    break;
+//                case "edit": CustomersDAO.update(id);
+//                    break;
+//                case "delete": CustomersDAO.delete(id);
+//                    break;
+//                case "read": CustomersDAO.displayCustomers();
+//                    break;
+//            }
+
+        } catch(NullPointerException npe) {
+            System.out.println("La connexion n'a pas été établie");
         } catch(SQLException sqle) {
             sqle.printStackTrace();
-        } finally {
-
         }
 
     }
