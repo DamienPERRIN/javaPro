@@ -9,10 +9,19 @@ public class CustomersDAO
     public static final String USERNAME = "root";
     public static final String PASSWORD = "";
 
+    public static void main(String[] args)
+    {
+        CustomersDAO objTest = new CustomersDAO();
+        objTest.createCustomer();
+        objTest.displayCustomers();
+        objTest.update(3);
+        objTest.delete(5);
+    }
+
     public static int createCustomer() throws SQLException
     {
         Connection conn = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
-        String sql = "INSERT INTO customer (fullname, password, email, country) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO customers (fullname, password, email, country) VALUES (?, ?, ?, ?)";
         assert conn != null;
         PreparedStatement st = conn.prepareStatement(sql);
         st.setString(1, "Billy the kid");
@@ -30,7 +39,7 @@ public class CustomersDAO
     public static List<Customers> displayCustomers() throws SQLException
     {
         Connection conn = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
-        String sql = "SELECT * FROM customer";
+        String sql = "SELECT * FROM customers";
         assert conn != null;
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(sql);
@@ -42,13 +51,13 @@ public class CustomersDAO
             String country = rs.getString(4);
             System.out.println(String.format(fullname, password, email, country)); //retour en console
         }
-        return null;
+        return List<Customers>;
     }
 
     public static int update(CustomersDAO id) throws SQLException
     {
         Connection conn = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
-        String sql = "UPDATE customer SET fullname=?, password=?, email=?, country=? WHERE id="+id;
+        String sql = "UPDATE customers SET fullname=?, password=?, email=?, country=? WHERE id="+id;
         assert conn != null;
 
         PreparedStatement st = conn.prepareStatement(sql);
@@ -67,7 +76,7 @@ public class CustomersDAO
     public static int delete(CustomersDAO id) throws SQLException
     {
         Connection conn = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
-        String sql = "DELETE FROM Users WHERE username=?";
+        String sql = "DELETE FROM customers WHERE username=?";
 
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, "bill");
